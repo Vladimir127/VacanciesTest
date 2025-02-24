@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="tab_text">10sp</dimen>
+    <dimen name="text1">14sp</dimen>
+    <dimen name="title1">22sp</dimen>
+    <dimen name="title2">20sp</dimen>
+    <dimen name="title3">16sp</dimen>
+
+    <dimen name="button_text1">16sp</dimen>
+    <dimen name="button_text2">14sp</dimen>
+
+    <dimen name="card_view_margin">16dp</dimen>
+    <dimen name="corner_radius">8dp</dimen>
+    <dimen name="icon_size">24dp</dimen>
+    <dimen name="margin_one_and_half">24dp</dimen>
+    <dimen name="margin_default">16dp</dimen>
+    <dimen name="margin_half">8dp</dimen>
+    <dimen name="margin_quarter">4dp</dimen>
+    <dimen name="margin_10">10dp</dimen>
+    <dimen name="margin_21">21dp</dimen>
+
+    <dimen name="button_height">32dp</dimen>
+    <dimen name="digit_text_view_size">48dp</dimen>
+</resources>
