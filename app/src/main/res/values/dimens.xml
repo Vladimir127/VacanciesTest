@@ -21,4 +21,5 @@
 
     <dimen name="button_height">32dp</dimen>
     <dimen name="digit_text_view_size">48dp</dimen>
+    <string name="response">Откликнуться</string>
 </resources>

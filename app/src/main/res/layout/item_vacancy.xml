@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="310dp"
+    android:layout_margin="@dimen/card_view_margin"
+    app:cardCornerRadius="@dimen/corner_radius"
+    android:backgroundTint="@color/grey1">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:id="@+id/add_to_favorite_button"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            android:layout_marginTop="@dimen/margin_default"
+            android:layout_marginEnd="@dimen/margin_default"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_heart_stroke"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/viewing_now_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginTop="@dimen/margin_default"
+            android:layout_marginBottom="@dimen/margin_10"
+            android:fontFamily="@font/sf_pro_display_regular"
+            android:textColor="@color/green"
+            android:textSize="@dimen/text1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Сейчас просматривает 1 человек" />
+
+        <TextView
+            android:id="@+id/title_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginTop="@dimen/margin_10"
+            android:fontFamily="@font/sf_pro_display_medium"
+            android:textColor="@color/white"
+            android:textSize="@dimen/title3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewing_now_text_view"
+            tools:text="Дизайнер для маркетплейсов Wildberries, Ozon" />
+
+        <TextView
+            android:id="@+id/salary_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginTop="@dimen/margin_10"
+            android:fontFamily="@font/sf_pro_display_semibold"
+            android:textColor="@color/white"
+            android:textSize="@dimen/title2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_text_view"
+            tools:text="1500-2900 Br" />
+
+        <TextView
+            android:id="@+id/city_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginTop="@dimen/margin_10"
+            android:fontFamily="@font/sf_pro_display_regular"
+            android:textSize="@dimen/text1"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/salary_text_view"
+            tools:text="Минск" />
+
+        <TextView
+            android:id="@+id/company_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginTop="@dimen/margin_quarter"
+            android:fontFamily="@font/sf_pro_display_regular"
+            android:textSize="@dimen/text1"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/city_text_view"
+            tools:text="Мобирикс" />
+
+        <ImageView
+            android:id="@+id/check_mark_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_half"
+            android:src="@drawable/ic_check_mark"
+            app:layout_constraintBottom_toBottomOf="@id/company_text_view"
+            app:layout_constraintStart_toEndOf="@id/company_text_view"
+            app:layout_constraintTop_toTopOf="@+id/company_text_view" />
+
+        <ImageView
+            android:id="@+id/briefcase_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginTop="@dimen/margin_10"
+            android:src="@drawable/ic_briefcase"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/company_text_view" />
+
+        <TextView
+            android:id="@+id/experience_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_half"
+            android:fontFamily="@font/sf_pro_display_regular"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text1"
+            app:layout_constraintBottom_toBottomOf="@id/briefcase_image_view"
+            app:layout_constraintStart_toEndOf="@id/briefcase_image_view"
+            app:layout_constraintTop_toTopOf="@id/briefcase_image_view"
+            tools:text="Опыт от 1 года до 3 лет" />
+
+        <TextView
+            android:id="@+id/published_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginTop="@dimen/margin_10"
+            android:fontFamily="@font/sf_pro_display_regular"
+            android:textColor="@color/grey3"
+            android:textSize="@dimen/text1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/experience_text_view"
+            tools:text="Опубликовано 20 февраля" />
+
+        <FrameLayout
+            android:id="@+id/response_button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginTop="@dimen/margin_21"
+            android:layout_marginEnd="@dimen/margin_default"
+            app:layout_constraintTop_toBottomOf="@id/published_text_view"
+            android:background="@drawable/rounded_rectangle_green">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_pro_display_medium"
+                android:text="@string/response"
+                android:textColor="@color/white"
+                android:textSize="@dimen/button_text2"
+                android:layout_gravity="center"/>
+
+        </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
+
+
+
+
