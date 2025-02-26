@@ -1,7 +1,7 @@
 package com.example.vacanciestest.domain.models
 
 data class Address(
-    var town: String? = null,
-    var street: String? = null,
-    var house: String? = null
+    val town: String,
+    val street: String,
+    val house: String
 )

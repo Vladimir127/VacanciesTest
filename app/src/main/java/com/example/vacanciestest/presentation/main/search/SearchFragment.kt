@@ -5,10 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.vacanciestest.R
 import com.example.vacanciestest.databinding.FragmentSearchBinding
 import com.example.vacanciestest.domain.models.Vacancy
 
@@ -37,6 +35,13 @@ class SearchFragment : Fragment() {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = vacanciesAdapter
         }
+
+        vacanciesAdapter.favoriteItemClickListener =
+            object : VacancyAdapter.FavoriteItemClickListener {
+                override fun onToggleFavorite(vacancyId: String) {
+                    viewModel.toggleFavorite(vacancyId)
+                }
+            }
 
         viewModel.vacancies.observe(viewLifecycleOwner) { vacancies ->
             showData(vacancies)

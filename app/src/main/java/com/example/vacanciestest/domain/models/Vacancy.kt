@@ -1,18 +1,18 @@
 package com.example.vacanciestest.domain.models
 
 data class Vacancy(
-    var id: String? = null,
-    var lookingNumber: Int? = null,
-    var title: String? = null,
-    var address: Address? = Address(),
-    var company: String? = null,
-    var experience: Experience? = Experience(),
-    var publishedDate: String? = null,
-    var isFavorite: Boolean? = null,
-    var salary: Salary? = Salary(),
-    var schedules: ArrayList<String> = arrayListOf(),
-    var appliedNumber: Int? = null,
-    var description: String? = null,
-    var responsibilities: String? = null,
-    var questions: ArrayList<String> = arrayListOf()
+    val id: String,
+    val lookingNumber: Int,
+    val title: String,
+    val address: Address,
+    val company: String,
+    val experience: Experience,
+    val publishedDate: String,
+    var isFavorite: Boolean,
+    val salary: Salary,
+    val schedules: ArrayList<String>,
+    val appliedNumber: Int,
+    val description: String,
+    val responsibilities: String,
+    val questions: ArrayList<String>
 )

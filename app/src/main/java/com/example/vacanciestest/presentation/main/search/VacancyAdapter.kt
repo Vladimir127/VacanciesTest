@@ -12,6 +12,7 @@ import com.example.vacanciestest.utils.formatPublishedDate
 
 class VacancyAdapter(val context: Context) : RecyclerView.Adapter<VacancyAdapter.VacancyViewHolder>() {
     private var vacancies : List<Vacancy> = emptyList()
+    var favoriteItemClickListener: FavoriteItemClickListener? = null
 
     fun setData(vacancies: List<Vacancy>) {
         this.vacancies = vacancies
@@ -40,6 +41,7 @@ class VacancyAdapter(val context: Context) : RecyclerView.Adapter<VacancyAdapter
 
         fun bind(vacancy: Vacancy) {
             this.vacancy = vacancy
+            initFavoriteButton()
 
             with(binding) {
                 // Сейчас просматривает
@@ -55,7 +57,7 @@ class VacancyAdapter(val context: Context) : RecyclerView.Adapter<VacancyAdapter
                     )
                 }
 
-                // Название
+                // Название и другие данные вакансии
                 titleTextView.text = vacancy.title
                 salaryTextView.text = vacancy.salary?.full
                 cityTextView.text = vacancy.address?.town
@@ -66,5 +68,27 @@ class VacancyAdapter(val context: Context) : RecyclerView.Adapter<VacancyAdapter
                 publishedTextView.text = context.resources.getString(R.string.published, formattedDate)
             }
         }
+
+        private fun initFavoriteButton() {
+            setFavoriteButtonIcon()
+
+            binding.addToFavoriteButton.setOnClickListener {
+                favoriteItemClickListener?.onToggleFavorite(vacancy.id)
+                vacancy.isFavorite = !vacancy.isFavorite
+                setFavoriteButtonIcon()
+            }
+        }
+
+        private fun setFavoriteButtonIcon() {
+            if (vacancy.isFavorite) {
+                binding.addToFavoriteButton.setImageResource(R.drawable.ic_heart_filled)
+            } else {
+                binding.addToFavoriteButton.setImageResource(R.drawable.ic_heart_stroke)
+            }
+        }
+    }
+
+    interface FavoriteItemClickListener {
+        fun onToggleFavorite(vacancyId: String)
     }
 }
