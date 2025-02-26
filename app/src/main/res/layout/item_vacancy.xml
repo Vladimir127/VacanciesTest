@@ -3,32 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="310dp"
-    android:layout_margin="@dimen/card_view_margin"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin_default"
     app:cardCornerRadius="@dimen/corner_radius"
     android:backgroundTint="@color/grey1">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/margin_default">
 
         <ImageButton
             android:id="@+id/add_to_favorite_button"
             android:layout_width="@dimen/icon_size"
             android:layout_height="@dimen/icon_size"
-            android:layout_marginTop="@dimen/margin_default"
-            android:layout_marginEnd="@dimen/margin_default"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_heart_stroke"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/viewing_now_text_view"
+            android:id="@+id/looking_now_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_default"
-            android:layout_marginTop="@dimen/margin_default"
             android:layout_marginBottom="@dimen/margin_10"
             android:fontFamily="@font/sf_pro_display_regular"
             android:textColor="@color/green"
@@ -41,20 +38,18 @@
             android:id="@+id/title_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_default"
             android:layout_marginTop="@dimen/margin_10"
             android:fontFamily="@font/sf_pro_display_medium"
             android:textColor="@color/white"
             android:textSize="@dimen/title3"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/viewing_now_text_view"
+            app:layout_constraintTop_toBottomOf="@id/looking_now_text_view"
             tools:text="Дизайнер для маркетплейсов Wildberries, Ozon" />
 
         <TextView
             android:id="@+id/salary_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_default"
             android:layout_marginTop="@dimen/margin_10"
             android:fontFamily="@font/sf_pro_display_semibold"
             android:textColor="@color/white"
@@ -67,7 +62,6 @@
             android:id="@+id/city_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_default"
             android:layout_marginTop="@dimen/margin_10"
             android:fontFamily="@font/sf_pro_display_regular"
             android:textSize="@dimen/text1"
@@ -80,7 +74,6 @@
             android:id="@+id/company_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_default"
             android:layout_marginTop="@dimen/margin_quarter"
             android:fontFamily="@font/sf_pro_display_regular"
             android:textSize="@dimen/text1"
@@ -103,7 +96,6 @@
             android:id="@+id/briefcase_image_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_default"
             android:layout_marginTop="@dimen/margin_10"
             android:src="@drawable/ic_briefcase"
             app:layout_constraintStart_toStartOf="parent"
@@ -126,7 +118,6 @@
             android:id="@+id/published_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_default"
             android:layout_marginTop="@dimen/margin_10"
             android:fontFamily="@font/sf_pro_display_regular"
             android:textColor="@color/grey3"
@@ -139,9 +130,7 @@
             android:id="@+id/response_button"
             android:layout_width="match_parent"
             android:layout_height="@dimen/button_height"
-            android:layout_marginStart="@dimen/margin_default"
             android:layout_marginTop="@dimen/margin_21"
-            android:layout_marginEnd="@dimen/margin_default"
             app:layout_constraintTop_toBottomOf="@id/published_text_view"
             android:background="@drawable/rounded_rectangle_green">
 
