@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.vacanciestest.databinding.FragmentSearchBinding
+import com.example.vacanciestest.domain.models.Offer
 import com.example.vacanciestest.domain.models.Vacancy
+import com.example.vacanciestest.utils.openWebSite
 
 class SearchFragment : Fragment() {
     private var _binding: FragmentSearchBinding? = null
@@ -16,6 +18,7 @@ class SearchFragment : Fragment() {
 
     private lateinit var viewModel: SearchViewModel
     private lateinit var vacanciesAdapter: VacancyAdapter
+    private lateinit var offersAdapter: OfferAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,15 +46,28 @@ class SearchFragment : Fragment() {
                 }
             }
 
+        offersAdapter = OfferAdapter()
+        binding.offersRecyclerView.apply {
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            adapter = offersAdapter
+        }
+
+        offersAdapter.onItemClickListener = { link ->
+            openWebSite(requireContext(), link)
+        }
+
         viewModel.vacancies.observe(viewLifecycleOwner) { vacancies ->
             showData(vacancies)
+        }
+        viewModel.offers.observe(viewLifecycleOwner) { offers ->
+            showOffers(offers)
         }
         viewModel.error.observe(viewLifecycleOwner) {
             showError()
         }
 
         showLoading()
-        viewModel.loadVacancies()
+        viewModel.loadData()
     }
 
     private fun showLoading() {
@@ -72,6 +88,16 @@ class SearchFragment : Fragment() {
         vacanciesAdapter.setData(vacancies)
     }
 
+    private fun showOffers(offers: List<Offer>) {
+        with(binding) {
+            errorLayout.visibility = View.INVISIBLE
+            loadingLayout.visibility = View.INVISIBLE
+            dataLayout.visibility = View.VISIBLE
+        }
+
+        offersAdapter.setData(offers)
+    }
+
     private fun showError() {
         with(binding) {
             errorLayout.visibility = View.VISIBLE
@@ -80,7 +106,7 @@ class SearchFragment : Fragment() {
 
             retryButton.setOnClickListener {
                 showLoading()
-                viewModel.loadVacancies()
+                viewModel.loadData()
             }
         }
     }

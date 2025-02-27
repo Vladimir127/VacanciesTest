@@ -1,5 +1,10 @@
 package com.example.vacanciestest.utils
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import android.widget.Toast
+import com.example.vacanciestest.R
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -22,5 +27,21 @@ fun formatPublishedDate(dateString: String?): String? {
         }
     } else {
         null
+    }
+}
+
+/**
+ * Открывает сайт в браузере
+ * @param context Контекст
+ * @param url Адрес сайта
+ */
+fun openWebSite(context: Context, url: String) {
+    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+
+    if (intent.resolveActivity(context.packageManager) != null) {
+        context.startActivity(intent)
+    } else {
+        Toast.makeText(context, context.resources.getString(R.string.app_not_found), Toast.LENGTH_SHORT).show()
     }
 }

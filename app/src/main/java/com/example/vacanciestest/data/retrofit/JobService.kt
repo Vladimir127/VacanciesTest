@@ -6,7 +6,7 @@ import retrofit2.http.Query
 
 interface JobService {
     @GET("uc")
-    suspend fun getVacancies(
+    suspend fun getData(
         @Query("id") id: String,
         @Query("export") export: String = "download"
     ): VacanciesResponse

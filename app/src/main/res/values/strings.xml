@@ -8,6 +8,8 @@
     <string name="error_loading_data">Ошибка при загрузке данных</string>
     <string name="retry">Повторить попытку</string>
     <string name="published">Опубликовано "%1$s"</string>
+    <string name="vacancies_for_you">Вакансии для вас</string>
+    <string name="app_not_found">Не найдено приложение</string>
 
     <plurals name="looking_now_persons">
         <item quantity="one">Сейчас просматривает %1$d человек</item>

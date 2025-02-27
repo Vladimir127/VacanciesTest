@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.vacanciestest.domain.models.Offer
 import com.example.vacanciestest.domain.models.Vacancy
 import com.example.vacanciestest.domain.repository.VacanciesRepository
 import com.example.vacanciestest.infrastructure.MyApp
@@ -23,15 +24,22 @@ class SearchViewModel(application: Application) : AndroidViewModel(application) 
     val vacancies: LiveData<List<Vacancy>>
         get() = _vacancies
 
+    private val _offers: MutableLiveData<List<Offer>> = MutableLiveData()
+    val offers: LiveData<List<Offer>>
+        get() = _offers
+
     private val _error: MutableLiveData<Throwable> = MutableLiveData()
     val error: LiveData<Throwable>
         get() = _error
 
-    fun loadVacancies() {
+    fun loadData() {
         viewModelScope.launch {
             try {
                 val vacancies = vacanciesRepository.getVacancies()
                 _vacancies.value = vacancies
+
+                val offers = vacanciesRepository.getOffers()
+                _offers.value = offers
             } catch (e: Exception) {
                 e.printStackTrace()
                 _error.value = e

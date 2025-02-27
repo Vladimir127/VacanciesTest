@@ -5,6 +5,7 @@
     <dimen name="title1">22sp</dimen>
     <dimen name="title2">20sp</dimen>
     <dimen name="title3">16sp</dimen>
+    <dimen name="title4">14sp</dimen>
 
     <dimen name="button_text1">16sp</dimen>
     <dimen name="button_text2">14sp</dimen>
@@ -14,6 +15,7 @@
     <dimen name="icon_size">24dp</dimen>
     <dimen name="margin_one_and_half">24dp</dimen>
     <dimen name="margin_default">16dp</dimen>
+    <dimen name="margin_double">32dp</dimen>
     <dimen name="margin_half">8dp</dimen>
     <dimen name="margin_quarter">4dp</dimen>
     <dimen name="margin_10">10dp</dimen>
@@ -21,5 +23,8 @@
 
     <dimen name="button_height">32dp</dimen>
     <dimen name="digit_text_view_size">48dp</dimen>
+    <dimen name="offer_card_width">132dp</dimen>
+    <dimen name="offer_card_height">120dp</dimen>
+    <dimen name="offer_icon_size">32dp</dimen>
     <string name="response">Откликнуться</string>
 </resources>

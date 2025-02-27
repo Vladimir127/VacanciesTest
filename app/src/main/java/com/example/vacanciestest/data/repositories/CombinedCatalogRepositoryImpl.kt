@@ -2,6 +2,7 @@ package com.example.vacanciestest.data.repositories
 
 import com.example.vacanciestest.data.retrofit.WebDataSource
 import com.example.vacanciestest.data.room.LocalDataSource
+import com.example.vacanciestest.domain.models.Offer
 import com.example.vacanciestest.domain.models.Vacancy
 import com.example.vacanciestest.domain.repository.VacanciesRepository
 
@@ -21,6 +22,10 @@ class CombinedVacanciesRepositoryImpl(
         }
 
         return vacancies
+    }
+
+    override suspend fun getOffers(): List<Offer> {
+        return webDataSource.getOffers()
     }
 
     override suspend fun getVacancy(vacancyId: String): Vacancy? {
