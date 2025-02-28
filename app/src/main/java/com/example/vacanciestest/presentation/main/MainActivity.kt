@@ -33,5 +33,6 @@ class MainActivity : AppCompatActivity() {
     private fun initNavigation() {
         navController = Navigation.findNavController(this, R.id.nav_host_fragment)
         NavigationUI.setupWithNavController(binding.bottomNavigationView, navController)
+        binding.bottomNavigationView.setOnApplyWindowInsetsListener(null)
     }
 }

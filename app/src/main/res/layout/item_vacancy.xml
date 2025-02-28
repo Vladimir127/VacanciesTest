@@ -31,55 +31,56 @@
             android:textColor="@color/green"
             android:textSize="@dimen/text1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Сейчас просматривает 1 человек" />
+            app:layout_constraintBottom_toTopOf="@id/title_text_view"
+            tools:text="Сейчас просматривает 1 человек"
+            android:visibility="visible"/>
 
         <TextView
             android:id="@+id/title_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_10"
             android:fontFamily="@font/sf_pro_display_medium"
             android:textColor="@color/white"
             android:textSize="@dimen/title3"
+            android:layout_marginBottom="@dimen/margin_10"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/looking_now_text_view"
+            app:layout_constraintBottom_toTopOf="@id/salary_text_view"
             tools:text="Дизайнер для маркетплейсов Wildberries, Ozon" />
 
         <TextView
             android:id="@+id/salary_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_10"
+            android:layout_marginBottom="@dimen/margin_10"
             android:fontFamily="@font/sf_pro_display_semibold"
             android:textColor="@color/white"
             android:textSize="@dimen/title2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/title_text_view"
+            app:layout_constraintBottom_toTopOf="@id/city_text_view"
             tools:text="1500-2900 Br" />
 
         <TextView
             android:id="@+id/city_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_10"
+            android:layout_marginBottom="@dimen/margin_quarter"
             android:fontFamily="@font/sf_pro_display_regular"
             android:textSize="@dimen/text1"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/salary_text_view"
+            app:layout_constraintBottom_toTopOf="@id/company_text_view"
             tools:text="Минск" />
 
         <TextView
             android:id="@+id/company_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_quarter"
+            android:layout_marginBottom="@dimen/margin_10"
             android:fontFamily="@font/sf_pro_display_regular"
             android:textSize="@dimen/text1"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/city_text_view"
+            app:layout_constraintBottom_toTopOf="@id/briefcase_image_view"
             tools:text="Мобирикс" />
 
         <ImageView
@@ -96,10 +97,10 @@
             android:id="@+id/briefcase_image_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_10"
+            android:layout_marginBottom="@dimen/margin_10"
             android:src="@drawable/ic_briefcase"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/company_text_view" />
+            app:layout_constraintBottom_toTopOf="@id/published_text_view" />
 
         <TextView
             android:id="@+id/experience_text_view"
@@ -118,20 +119,19 @@
             android:id="@+id/published_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_10"
+            android:layout_marginBottom="@dimen/margin_21"
             android:fontFamily="@font/sf_pro_display_regular"
             android:textColor="@color/grey3"
             android:textSize="@dimen/text1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/experience_text_view"
+            app:layout_constraintBottom_toTopOf="@id/response_button"
             tools:text="Опубликовано 20 февраля" />
 
         <FrameLayout
             android:id="@+id/response_button"
             android:layout_width="match_parent"
             android:layout_height="@dimen/button_height"
-            android:layout_marginTop="@dimen/margin_21"
-            app:layout_constraintTop_toBottomOf="@id/published_text_view"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:background="@drawable/rounded_rectangle_green">
 
             <TextView
