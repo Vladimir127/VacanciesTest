@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.login.code.CodeFragment"
+    android:background="@color/black"
+    android:orientation="vertical"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:id="@+id/sent_code_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_default"
+        android:layout_marginEnd="@dimen/margin_default"
+        style="@style/Title2"
+        android:text="@string/sent_code_title" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_default"
+        android:layout_marginEnd="@dimen/margin_default"
+        android:layout_marginTop="@dimen/margin_default"
+        style="@style/Title3"
+        android:text="@string/sent_code_description" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_default"
+        android:layout_marginEnd="@dimen/margin_default"
+        android:layout_marginTop="@dimen/margin_default"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/digit_edit_text1"
+            android:background="@drawable/rounded_rectangle_grey2"
+            android:text="@string/asterisk"
+            style="@style/DigitEditText"/>
+
+        <EditText
+            android:id="@+id/digit_edit_text2"
+            android:background="@drawable/rounded_rectangle_grey2"
+            android:text="@string/asterisk"
+            style="@style/DigitEditText"/>
+
+        <EditText
+            android:id="@+id/digit_edit_text3"
+            android:background="@drawable/rounded_rectangle_grey2"
+            android:text="@string/asterisk"
+            style="@style/DigitEditText"/>
+
+        <EditText
+            android:id="@+id/digit_edit_text4"
+            android:background="@drawable/rounded_rectangle_grey2"
+            android:text="@string/asterisk"
+            style="@style/DigitEditText"/>
+
+    </LinearLayout>
+
+
+
+    <TextView
+        android:id="@+id/confirm_button"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        style="@style/ButtonText1"
+        android:layout_marginTop="@dimen/margin_default"
+        android:background="@drawable/rounded_rectangle_blue"
+        android:layout_marginStart="@dimen/margin_default"
+        android:layout_marginEnd="@dimen/margin_one_and_half"
+        android:layout_marginBottom="@dimen/margin_one_and_half"
+        android:text="@string/confirm"
+        android:gravity="center"/>
+
+</LinearLayout>

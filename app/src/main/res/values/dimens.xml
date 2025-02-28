@@ -26,5 +26,4 @@
     <dimen name="offer_card_width">132dp</dimen>
     <dimen name="offer_card_height">120dp</dimen>
     <dimen name="offer_icon_size">32dp</dimen>
-    <string name="response">Откликнуться</string>
 </resources>

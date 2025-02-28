@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/authorization_graph"
+    app:startDestination="@id/emailFragment">
+
+    <fragment
+        android:id="@+id/emailFragment"
+        android:name="com.example.vacanciestest.presentation.login.email.EmailFragment"
+        android:label="fragment_email"
+        tools:layout="@layout/fragment_email" >
+        <action
+            android:id="@+id/action_emailFragment_to_codeFragment"
+            app:destination="@id/codeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/codeFragment"
+        android:name="com.example.vacanciestest.presentation.login.code.CodeFragment"
+        android:label="fragment_code"
+        tools:layout="@layout/fragment_code" >
+        <argument
+            android:name="email"
+            app:argType="string" />
+    </fragment>
+</navigation>

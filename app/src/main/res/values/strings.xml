@@ -10,6 +10,19 @@
     <string name="published">Опубликовано "%1$s"</string>
     <string name="vacancies_for_you">Вакансии для вас</string>
     <string name="app_not_found">Не найдено приложение</string>
+    <string name="response">Откликнуться</string>
+    <string name="job_search">Поиск работы</string>
+    <string name="next">Продолжить</string>
+    <string name="enter_with_password">Войти с паролем</string>
+    <string name="employees_search_description">Размещение вакансий и доступ к базе резюме</string>
+    <string name="search_employees">Я ищу сотрудников</string>
+    <string name="employees_search">Поиск сотрудников</string>
+    <string name="email">e-mail</string>
+    <string name="error_email">Введите корректный e-mail</string>
+    <string name="sent_code_title">Отправили код на "%1$s"</string>
+    <string name="sent_code_description">Напишите его, чтобы подтвердить, что это вы, а не кто-то другой входит в личный кабинет</string>
+    <string name="confirm">Подтвердить</string>
+    <string name="asterisk">*</string>
 
     <plurals name="looking_now_persons">
         <item quantity="one">Сейчас просматривает %1$d человек</item>
@@ -17,4 +30,6 @@
         <item quantity="many">Сейчас просматривают %1$d человек</item>
         <item quantity="other">Сейчас просматривают %1$d человек</item>
     </plurals>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

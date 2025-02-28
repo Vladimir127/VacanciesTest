@@ -36,12 +36,11 @@ fun formatPublishedDate(dateString: String?): String? {
  * @param url Адрес сайта
  */
 fun openWebSite(context: Context, url: String) {
-    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-
-    if (intent.resolveActivity(context.packageManager) != null) {
+    try {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         context.startActivity(intent)
-    } else {
+    } catch(e: Exception) {
         Toast.makeText(context, context.resources.getString(R.string.app_not_found), Toast.LENGTH_SHORT).show()
     }
 }

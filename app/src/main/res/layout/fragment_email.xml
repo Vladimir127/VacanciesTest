@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.login.email.EmailFragment"
+    android:background="@color/black"
+    android:orientation="vertical"
+    android:gravity="center_vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_default"
+        android:layout_marginEnd="@dimen/margin_default"
+        android:layout_marginBottom="@dimen/margin_default"
+        android:background="@drawable/rounded_rectangle_grey1">
+
+        <TextView
+            android:id="@+id/title_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginTop="@dimen/margin_one_and_half"
+            style="@style/Title3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@string/job_search" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/email_layout"
+            style="@style/TextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/email"
+            android:textColorHint="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/title_text_view">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email_edit_text"
+                style="@style/TextInputEditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textUri"
+                tools:text="example@example.com"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/continue_button"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            style="@style/ButtonText2"
+            app:layout_constraintTop_toBottomOf="@id/email_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/enter_with_password_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="@dimen/margin_half"
+            android:background="@drawable/rounded_rectangle_blue"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginEnd="@dimen/margin_one_and_half"
+            android:layout_marginBottom="@dimen/margin_one_and_half"
+            android:text="@string/next"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/enter_with_password_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/ButtonText2"
+            android:textColor="@color/blue"
+            app:layout_constraintTop_toTopOf="@id/continue_button"
+            app:layout_constraintBottom_toBottomOf="@id/continue_button"
+            app:layout_constraintStart_toEndOf="@id/continue_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/margin_default"
+            android:text="@string/enter_with_password"
+            android:gravity="center"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_default"
+        android:layout_marginEnd="@dimen/margin_default"
+        android:background="@drawable/rounded_rectangle_grey1">
+
+        <TextView
+            android:id="@+id/employees_search_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginTop="@dimen/margin_one_and_half"
+            style="@style/Title3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@string/employees_search" />
+
+        <TextView
+            android:id="@+id/employees_search_description_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginTop="@dimen/margin_half"
+            style="@style/ButtonText2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/employees_search_text_view"
+            android:text="@string/employees_search_description" />
+
+        <TextView
+            android:id="@+id/search_employees_button"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            style="@style/ButtonText2"
+            app:layout_constraintTop_toBottomOf="@id/employees_search_description_text_view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="@dimen/margin_default"
+            android:background="@drawable/rounded_rectangle_green"
+            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginEnd="@dimen/margin_one_and_half"
+            android:layout_marginBottom="@dimen/margin_one_and_half"
+            android:text="@string/search_employees"
+            android:gravity="center"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

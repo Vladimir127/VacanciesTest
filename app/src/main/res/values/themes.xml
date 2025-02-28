@@ -29,4 +29,47 @@
         <item name="android:textSize">@dimen/title3</item>
         <item name="android:textColor">@color/white</item>
     </style>
+
+    <style name="ButtonText1">
+        <item name="android:fontFamily">@font/sf_pro_display_semibold</item>
+        <item name="android:textSize">@dimen/button_text1</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="ButtonText2">
+        <item name="android:fontFamily">@font/sf_pro_display_regular</item>
+        <item name="android:textSize">@dimen/button_text2</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TextInputLayoutStyle" parent="Widget.Material3.TextInputLayout.FilledBox">
+        <item name="android:layout_marginStart">@dimen/margin_default</item>
+        <item name="android:layout_marginTop">@dimen/margin_default</item>
+        <item name="android:layout_marginEnd">@dimen/margin_default</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxBackgroundColor">@android:color/transparent</item>
+        <item name="boxStrokeColor">@android:color/transparent</item>
+        <item name="errorEnabled">true</item>
+        <item name="hintEnabled">true</item>
+        <item name="helperTextEnabled">false</item>
+    </style>
+
+    <style name="TextInputEditTextStyle" parent="Widget.Material3.TextInputEditText.FilledBox">
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:background">@drawable/rounded_rectangle_grey2</item>
+
+        <item name="android:fontFamily">@font/sf_pro_display_medium</item>
+        <item name="android:textSize">@dimen/title3</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="DigitEditText" parent="Title1">
+        <item name="android:layout_width">@dimen/digit_text_view_size</item>
+        <item name="android:layout_height">@dimen/digit_text_view_size</item>
+        <item name="android:maxLength">1</item>
+        <item name="android:inputType">number</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:layout_marginEnd">@dimen/margin_half</item>
+    </style>
 </resources>
