@@ -7,7 +7,6 @@ import com.example.vacanciestest.di.DbModule
 import com.example.vacanciestest.di.NetworkModule
 
 class MyApp : Application() {
-
     val appComponent: AppComponent by lazy {
         DaggerAppComponent.builder()
             .networkModule(NetworkModule())

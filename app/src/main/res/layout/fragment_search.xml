@@ -12,23 +12,34 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/search_edit_text"
-            android:layout_height="@dimen/edit_text_height"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/email_layout"
+            style="@style/TextInputLayoutStyle"
             android:layout_width="0dp"
-            android:paddingStart="@dimen/edit_text_padding"
-            android:paddingEnd="@dimen/edit_text_padding"
-            android:background="@drawable/rounded_rectangle_grey2"
-            android:textCursorDrawable="@null"
+            android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/filter_button"
-            tools:text="Поиск"
-            android:textSize="@dimen/title3"
-            android:layout_marginStart="@dimen/margin_default"
-            android:layout_marginTop="@dimen/margin_default"
-            android:layout_marginEnd="@dimen/margin_half"
-            android:textColor="@color/white"/>
+            app:startIconDrawable="@drawable/ic_search"
+            app:startIconTint="@color/grey3"
+            app:hintEnabled="false"
+            app:errorEnabled="false"
+            android:layout_marginEnd="@dimen/margin_half">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email_edit_text"
+                style="@style/TextInputEditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edit_text_height"
+                android:inputType="textUri"
+                android:paddingStart="48dp"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                android:hint="@string/search_hint"
+                android:textColorHint="@color/grey3"
+                android:textSize="@dimen/text1"
+                android:fontFamily="@font/sf_pro_display_regular"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <ImageButton
             android:id="@+id/filter_button"
@@ -52,7 +63,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/search_edit_text"
+            app:layout_constraintTop_toBottomOf="@id/email_layout"
             tools:listitem="@layout/item_offer" />
 
         <TextView

@@ -46,10 +46,4 @@ class SearchViewModel(application: Application) : AndroidViewModel(application) 
             }
         }
     }
-
-    fun toggleFavorite(vacancyId: String) {
-        viewModelScope.launch {
-            vacanciesRepository.toggleFavorite(vacancyId)
-        }
-    }
 }

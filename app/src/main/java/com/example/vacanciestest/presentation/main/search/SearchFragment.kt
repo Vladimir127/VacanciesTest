@@ -10,13 +10,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.vacanciestest.databinding.FragmentSearchBinding
 import com.example.vacanciestest.domain.models.Offer
 import com.example.vacanciestest.domain.models.Vacancy
+import com.example.vacanciestest.presentation.main.favorites.FavoritesSharedViewModel
 import com.example.vacanciestest.utils.openWebSite
 
 class SearchFragment : Fragment() {
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var viewModel: SearchViewModel
+    private lateinit var searchViewModel: SearchViewModel
+    private lateinit var favoritesSharedViewModel: FavoritesSharedViewModel
     private lateinit var vacanciesAdapter: VacancyAdapter
     private lateinit var offersAdapter: OfferAdapter
 
@@ -31,7 +33,12 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(this@SearchFragment)[SearchViewModel::class.java]
+        val viewModelProvider = ViewModelProvider(
+            requireActivity(),
+            ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)        )
+        favoritesSharedViewModel = viewModelProvider[FavoritesSharedViewModel::class.java]
+
+        searchViewModel = ViewModelProvider(this@SearchFragment)[SearchViewModel::class.java]
 
         vacanciesAdapter = VacancyAdapter(requireContext())
         binding.recyclerView.apply {
@@ -42,7 +49,7 @@ class SearchFragment : Fragment() {
         vacanciesAdapter.favoriteItemClickListener =
             object : VacancyAdapter.FavoriteItemClickListener {
                 override fun onToggleFavorite(vacancyId: String) {
-                    viewModel.toggleFavorite(vacancyId)
+                    favoritesSharedViewModel.toggleFavorite(vacancyId)
                 }
             }
 
@@ -56,18 +63,18 @@ class SearchFragment : Fragment() {
             openWebSite(requireContext(), link)
         }
 
-        viewModel.vacancies.observe(viewLifecycleOwner) { vacancies ->
+        searchViewModel.vacancies.observe(viewLifecycleOwner) { vacancies ->
             showData(vacancies)
         }
-        viewModel.offers.observe(viewLifecycleOwner) { offers ->
+        searchViewModel.offers.observe(viewLifecycleOwner) { offers ->
             showOffers(offers)
         }
-        viewModel.error.observe(viewLifecycleOwner) {
+        searchViewModel.error.observe(viewLifecycleOwner) {
             showError()
         }
 
         showLoading()
-        viewModel.loadData()
+        searchViewModel.loadData()
     }
 
     private fun showLoading() {
@@ -106,7 +113,7 @@ class SearchFragment : Fragment() {
 
             retryButton.setOnClickListener {
                 showLoading()
-                viewModel.loadData()
+                searchViewModel.loadData()
             }
         }
     }

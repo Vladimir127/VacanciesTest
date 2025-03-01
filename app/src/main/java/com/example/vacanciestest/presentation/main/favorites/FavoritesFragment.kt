@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.vacanciestest.R
 import com.example.vacanciestest.databinding.FragmentFavoritesBinding
 import com.example.vacanciestest.domain.models.Vacancy
 import com.example.vacanciestest.presentation.main.search.VacancyAdapter
@@ -15,7 +16,7 @@ class FavoritesFragment : Fragment() {
     private var _binding: FragmentFavoritesBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var viewModel: FavoritesViewModel
+    private lateinit var viewModel: FavoritesSharedViewModel
     private lateinit var vacanciesAdapter: VacancyAdapter
 
     override fun onCreateView(
@@ -29,8 +30,11 @@ class FavoritesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel =
-            ViewModelProvider(this@FavoritesFragment)[FavoritesViewModel::class.java]
+        val viewModelProvider = ViewModelProvider(
+            requireActivity(),
+            ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
+        )
+        viewModel = viewModelProvider[FavoritesSharedViewModel::class.java]
 
         vacanciesAdapter = VacancyAdapter(requireContext())
         binding.recyclerView.apply {
@@ -45,6 +49,9 @@ class FavoritesFragment : Fragment() {
                 }
             }
 
+        viewModel.favoritesCount.observe(viewLifecycleOwner) { count ->
+            binding.countTextView.text = requireContext().resources.getQuantityString(R.plurals.favorites_count, count, count)
+        }
         viewModel.favoriteVacancies.observe(viewLifecycleOwner) { vacancies ->
             showData(vacancies)
         }

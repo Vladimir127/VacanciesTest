@@ -11,13 +11,23 @@ import com.example.vacanciestest.infrastructure.MyApp
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class FavoritesViewModel(application: Application): AndroidViewModel(application) {
+/**
+ * Общая ViewModel для управления избранным.
+ * Используется для добавления элементов в избранное (и удаления их оттуда)
+ * во фрагментах [SearchFragment] и [FavoritesFragment], а также немедленного отображения
+ * количества избранных элементов в [MainActivity]
+ */
+class FavoritesSharedViewModel(application: Application) : AndroidViewModel(application) {
     @Inject
     lateinit var vacanciesRepository: VacanciesRepository
 
     init {
         (application as MyApp).appComponent.inject(this)
     }
+
+    private val _favoritesCount: MutableLiveData<Int> = MutableLiveData()
+    val favoritesCount: LiveData<Int>
+        get() = _favoritesCount
 
     private val _favoriteVacancies: MutableLiveData<List<Vacancy>> = MutableLiveData()
     val favoriteVacancies: LiveData<List<Vacancy>>
@@ -42,7 +52,20 @@ class FavoritesViewModel(application: Application): AndroidViewModel(application
     fun toggleFavorite(vacancyId: String) {
         viewModelScope.launch {
             vacanciesRepository.toggleFavorite(vacancyId)
-            _favoriteVacancies.value = vacanciesRepository.getFavorites()
+            loadFavoritesCount()
+            loadFavorites()
+        }
+    }
+
+    fun loadFavoritesCount() {
+        viewModelScope.launch {
+            try {
+                val count = vacanciesRepository.getFavoritesCount()
+                _favoritesCount.value = count
+            } catch (e: Exception) {
+                e.printStackTrace()
+                _favoritesCount.value = 0
+            }
         }
     }
 }
