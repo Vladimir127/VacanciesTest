@@ -8,7 +8,7 @@ import com.example.vacanciestest.R
 import com.example.vacanciestest.databinding.ItemOfferBinding
 import com.example.vacanciestest.domain.models.Offer
 
-class OfferAdapter() : RecyclerView.Adapter<OfferAdapter.OfferViewHolder>() {
+class OfferAdapter : RecyclerView.Adapter<OfferAdapter.OfferViewHolder>() {
     private var offers : List<Offer> = emptyList()
     var onItemClickListener: ((String) -> Unit)? = null
 
@@ -69,7 +69,7 @@ class OfferAdapter() : RecyclerView.Adapter<OfferAdapter.OfferViewHolder>() {
                     linkTextView.visibility = View.GONE
                 } else {
                     linkTextView.visibility = View.VISIBLE
-                    linkTextView.text = offer.button.text
+                    linkTextView.text = offer.button?.text
                 }
             }
         }

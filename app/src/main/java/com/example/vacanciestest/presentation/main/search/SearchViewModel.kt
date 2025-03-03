@@ -24,6 +24,10 @@ class SearchViewModel(application: Application) : AndroidViewModel(application) 
     val vacancies: LiveData<List<Vacancy>>
         get() = _vacancies
 
+    private val _vacanciesCount: MutableLiveData<Int> = MutableLiveData()
+    val vacanciesCount: LiveData<Int>
+        get() = _vacanciesCount
+
     private val _offers: MutableLiveData<List<Offer>> = MutableLiveData()
     val offers: LiveData<List<Offer>>
         get() = _offers
@@ -32,17 +36,38 @@ class SearchViewModel(application: Application) : AndroidViewModel(application) 
     val error: LiveData<Throwable>
         get() = _error
 
-    fun loadData() {
+    fun loadVacancies() {
         viewModelScope.launch {
             try {
-                val vacancies = vacanciesRepository.getVacancies()
+                val vacancies = vacanciesRepository.getFirstThreeVacancies()
                 _vacancies.value = vacancies
+            } catch (e: Exception) {
+                e.printStackTrace()
+                _error.value = e
+            }
+        }
+    }
 
+    fun loadOffers() {
+        viewModelScope.launch {
+            try {
                 val offers = vacanciesRepository.getOffers()
                 _offers.value = offers
             } catch (e: Exception) {
                 e.printStackTrace()
-                _error.value = e
+                _offers.value = emptyList()
+            }
+        }
+    }
+
+    fun loadVacanciesCount() {
+        viewModelScope.launch {
+            try {
+                val vacanciesCount = vacanciesRepository.getVacanciesCount()
+                _vacanciesCount.value = vacanciesCount
+            } catch (e: Exception) {
+                e.printStackTrace()
+                _vacanciesCount.value = 0
             }
         }
     }

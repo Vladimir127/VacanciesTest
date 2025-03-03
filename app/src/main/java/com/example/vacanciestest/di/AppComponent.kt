@@ -1,6 +1,7 @@
 package com.example.vacanciestest.di
 
 import com.example.vacanciestest.presentation.main.favorites.FavoritesSharedViewModel
+import com.example.vacanciestest.presentation.main.more.MoreVacanciesViewModel
 import com.example.vacanciestest.presentation.main.search.SearchViewModel
 import dagger.Component
 
@@ -8,4 +9,5 @@ import dagger.Component
 interface AppComponent {
     fun inject(searchViewModel: SearchViewModel)
     fun inject(favoritesSharedViewModel: FavoritesSharedViewModel)
+    fun inject(moreVacanciesViewModel: MoreVacanciesViewModel)
 }

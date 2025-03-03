@@ -12,6 +12,7 @@ import com.example.vacanciestest.utils.formatPublishedDate
 
 class VacancyAdapter(val context: Context) : RecyclerView.Adapter<VacancyAdapter.VacancyViewHolder>() {
     private var vacancies : List<Vacancy> = emptyList()
+    var onItemClickListener: ((String) -> Unit)? = null
     var favoriteItemClickListener: FavoriteItemClickListener? = null
 
     fun setData(vacancies: List<Vacancy>) {
@@ -38,6 +39,16 @@ class VacancyAdapter(val context: Context) : RecyclerView.Adapter<VacancyAdapter
     inner class VacancyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding = ItemVacancyBinding.bind(view)
         private lateinit var vacancy: Vacancy
+
+        init {
+            itemView.setOnClickListener {
+                onItemClickListener?.invoke(vacancy.id)
+            }
+
+            binding.responseButton.setOnClickListener {
+
+            }
+        }
 
         fun bind(vacancy: Vacancy) {
             this.vacancy = vacancy

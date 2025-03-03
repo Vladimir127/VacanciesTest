@@ -9,9 +9,27 @@ class WebDataSource(private val jobService: JobService) {
     suspend fun getVacancies(): List<Vacancy> {
         return withContext(Dispatchers.IO) {
             try {
-                // Чтобы обратиться к серверу без конкретного эндпоинта,
-                // необходимо передать пустую строку в качестве URL
                 jobService.getData("1z4TbeDkbfXkvgpoJprXbN85uCcD7f00r").vacancies
+            } catch (e: Exception) {
+                throw e
+            }
+        }
+    }
+
+    suspend fun getVacanciesCount(): Int {
+        return withContext(Dispatchers.IO) {
+            try {
+                jobService.getData("1z4TbeDkbfXkvgpoJprXbN85uCcD7f00r").vacancies.size
+            } catch (e: Exception) {
+                throw e
+            }
+        }
+    }
+
+    suspend fun getFirstThreeVacancies(): List<Vacancy> {
+        return withContext(Dispatchers.IO) {
+            try {
+                jobService.getData("1z4TbeDkbfXkvgpoJprXbN85uCcD7f00r").vacancies.take(3)
             } catch (e: Exception) {
                 throw e
             }

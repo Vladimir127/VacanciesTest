@@ -9,12 +9,23 @@
         android:id="@+id/searchFragment"
         android:name="com.example.vacanciestest.presentation.main.search.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_moreVacanciesFragment"
+            app:destination="@id/moreVacanciesFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_vacancyFragment"
+            app:destination="@id/vacancyFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
         android:name="com.example.vacanciestest.presentation.main.favorites.FavoritesFragment"
         android:label="fragment_favorites"
-        tools:layout="@layout/fragment_favorites" />
+        tools:layout="@layout/fragment_favorites" >
+        <action
+            android:id="@+id/action_favoritesFragment_to_vacancyFragment"
+            app:destination="@id/vacancyFragment" />
+    </fragment>
     <fragment
         android:id="@+id/responsesFragment"
         android:name="com.example.vacanciestest.presentation.main.ResponsesFragment"
@@ -30,4 +41,18 @@
         android:name="com.example.vacanciestest.presentation.main.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/moreVacanciesFragment"
+        android:name="com.example.vacanciestest.presentation.main.more.MoreVacanciesFragment"
+        android:label="fragment_more_vacancies"
+        tools:layout="@layout/fragment_more_vacancies" >
+        <action
+            android:id="@+id/action_moreVacanciesFragment_to_vacancyFragment"
+            app:destination="@id/vacancyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/vacancyFragment"
+        android:name="com.example.vacanciestest.presentation.main.vacancy.VacancyFragment"
+        android:label="fragment_vacancy"
+        tools:layout="@layout/fragment_vacancy" />
 </navigation>

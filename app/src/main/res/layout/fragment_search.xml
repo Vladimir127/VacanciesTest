@@ -1,112 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".presentation.main.search.SearchFragment"
-    android:background="@color/black">
+    android:background="@color/black"
+    tools:context=".presentation.main.search.SearchFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:id="@+id/data_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/email_layout"
-            style="@style/TextInputLayoutStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/filter_button"
-            app:startIconDrawable="@drawable/ic_search"
-            app:startIconTint="@color/grey3"
-            app:hintEnabled="false"
-            app:errorEnabled="false"
-            android:layout_marginEnd="@dimen/margin_half">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/email_edit_text"
-                style="@style/TextInputEditTextStyle"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/search_layout"
+                style="@style/TextInputLayoutStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_half"
+                app:errorEnabled="false"
+                app:hintEnabled="false"
+                app:layout_constraintEnd_toStartOf="@id/filter_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:startIconDrawable="@drawable/ic_search"
+                app:startIconTint="@color/grey3">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/email_edit_text"
+                    style="@style/TextInputEditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edit_text_height"
+                    android:fontFamily="@font/sf_pro_display_regular"
+                    android:hint="@string/search_hint"
+                    android:inputType="textUri"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="0dp"
+                    android:textColorHint="@color/grey3"
+                    android:textSize="@dimen/text1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageButton
+                android:id="@+id/filter_button"
+                android:layout_width="@dimen/edit_text_height"
+                android:layout_height="@dimen/edit_text_height"
+                android:layout_margin="@dimen/margin_default"
+                android:background="@drawable/rounded_rectangle_grey2"
+                android:src="@drawable/ic_filter"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/offers_recycler_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/margin_default"
+                android:paddingTop="@dimen/margin_default"
+                android:paddingEnd="@dimen/margin_default"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/search_layout"
+                tools:listitem="@layout/item_offer" />
+
+            <TextView
+                android:id="@+id/vacancies_title_text_view"
+                style="@style/Title2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_default"
+                android:layout_marginTop="@dimen/margin_double"
+                android:layout_marginBottom="@dimen/margin_default"
+                android:text="@string/vacancies_for_you"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/offers_recycler_view" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/margin_default"
+                android:paddingTop="@dimen/margin_default"
+                android:paddingEnd="@dimen/margin_default"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/vacancies_title_text_view"
+                tools:listitem="@layout/item_vacancy" />
+
+            <TextView
+                android:id="@+id/more_vacancies_button"
+                style="@style/ButtonText1"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/edit_text_height"
-                android:inputType="textUri"
-                android:paddingStart="48dp"
-                android:paddingTop="0dp"
-                android:paddingBottom="0dp"
-                android:hint="@string/search_hint"
-                android:textColorHint="@color/grey3"
-                android:textSize="@dimen/text1"
-                android:fontFamily="@font/sf_pro_display_regular"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <ImageButton
-            android:id="@+id/filter_button"
-            android:layout_width="@dimen/edit_text_height"
-            android:layout_height="@dimen/edit_text_height"
-            android:background="@drawable/rounded_rectangle_grey2"
-            android:src="@drawable/ic_filter"
-            android:layout_margin="@dimen/margin_default"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/offers_recycler_view"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingStart="@dimen/margin_default"
-            android:paddingTop="@dimen/margin_default"
-            android:paddingEnd="@dimen/margin_default"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/email_layout"
-            tools:listitem="@layout/item_offer" />
-
-        <TextView
-            android:id="@+id/vacancies_title_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_double"
-            android:layout_marginStart="@dimen/margin_default"
-            android:layout_marginBottom="@dimen/margin_default"
-            style="@style/Title2"
-            android:text="@string/vacancies_for_you"
-            app:layout_constraintTop_toBottomOf="@id/offers_recycler_view"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:paddingStart="@dimen/margin_default"
-            android:paddingTop="@dimen/margin_default"
-            android:paddingEnd="@dimen/margin_default"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/vacancies_title_text_view"
-            tools:listitem="@layout/item_vacancy" />
-
-        <TextView
-            android:id="@+id/more_vacancies_button"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/edit_text_height"
-            style="@style/ButtonText1"
-            android:layout_marginTop="@dimen/margin_default"
-            android:background="@drawable/rounded_rectangle_blue"
-            android:layout_marginStart="@dimen/margin_default"
-            android:layout_marginEnd="@dimen/margin_default"
-            android:layout_marginBottom="@dimen/margin_default"
-            android:text="@string/more_vacancies"
-            android:gravity="center"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_marginStart="@dimen/margin_default"
+                android:layout_marginEnd="@dimen/margin_default"
+                android:layout_marginBottom="@dimen/margin_default"
+                android:background="@drawable/rounded_rectangle_blue"
+                android:gravity="center"
+                android:text="@string/more_vacancies"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/recycler_view"
+                android:visibility="gone"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/loading_layout"
@@ -138,7 +142,7 @@
             android:layout_marginBottom="@dimen/margin_default"
             android:fontFamily="@font/sf_pro_display_medium"
             android:text="@string/error_loading_data"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="@dimen/title1"
             app:layout_constraintBottom_toTopOf="@id/retry_button"
             app:layout_constraintEnd_toEndOf="parent"

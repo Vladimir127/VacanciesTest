@@ -24,6 +24,19 @@ class CombinedVacanciesRepositoryImpl(
         return vacancies
     }
 
+    override suspend fun getFirstThreeVacancies(): List<Vacancy> {
+        val vacancies = webDataSource.getFirstThreeVacancies()
+        val favoriteEntities = localDataSource.getFavorites()
+        val favoriteIds = favoriteEntities.map { it.vacancyId }
+
+        for (vacancy in vacancies) {
+            val isFavorite = favoriteIds.contains(vacancy.id)
+            vacancy.isFavorite = isFavorite
+        }
+
+        return vacancies
+    }
+
     override suspend fun getOffers(): List<Offer> {
         return webDataSource.getOffers()
     }
@@ -42,6 +55,10 @@ class CombinedVacanciesRepositoryImpl(
 
     override suspend fun toggleFavorite(vacancyId: String) {
         localDataSource.toggleFavorite(vacancyId)
+    }
+
+    override suspend fun getVacanciesCount(): Int {
+        return webDataSource.getVacanciesCount()
     }
 
     override suspend fun getFavoritesCount(): Int {

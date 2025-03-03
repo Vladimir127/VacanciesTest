@@ -1,4 +1,4 @@
-package com.example.vacanciestest.presentation.main.favorites
+package com.example.vacanciestest.presentation.main.more
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,22 +9,24 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.vacanciestest.R
-import com.example.vacanciestest.databinding.FragmentFavoritesBinding
+import com.example.vacanciestest.databinding.FragmentMoreVacanciesBinding
 import com.example.vacanciestest.domain.models.Vacancy
+import com.example.vacanciestest.presentation.main.favorites.FavoritesSharedViewModel
 import com.example.vacanciestest.presentation.main.search.VacancyAdapter
 
-class FavoritesFragment : Fragment() {
-    private var _binding: FragmentFavoritesBinding? = null
+class MoreVacanciesFragment : Fragment() {
+    private var _binding: FragmentMoreVacanciesBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var viewModel: FavoritesSharedViewModel
+    private lateinit var moreVacanciesViewModel: MoreVacanciesViewModel
+    private lateinit var favoritesSharedViewModel: FavoritesSharedViewModel
     private lateinit var vacanciesAdapter: VacancyAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentFavoritesBinding.inflate(inflater, container, false)
+        _binding = FragmentMoreVacanciesBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -33,9 +35,10 @@ class FavoritesFragment : Fragment() {
 
         val viewModelProvider = ViewModelProvider(
             requireActivity(),
-            ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
-        )
-        viewModel = viewModelProvider[FavoritesSharedViewModel::class.java]
+            ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)        )
+        favoritesSharedViewModel = viewModelProvider[FavoritesSharedViewModel::class.java]
+
+        moreVacanciesViewModel = ViewModelProvider(this@MoreVacanciesFragment)[MoreVacanciesViewModel::class.java]
 
         vacanciesAdapter = VacancyAdapter(requireContext())
         binding.recyclerView.apply {
@@ -43,29 +46,30 @@ class FavoritesFragment : Fragment() {
             adapter = vacanciesAdapter
         }
 
-        vacanciesAdapter.onItemClickListener = {
-            findNavController().navigate(R.id.action_favoritesFragment_to_vacancyFragment)
-        }
-
         vacanciesAdapter.favoriteItemClickListener =
             object : VacancyAdapter.FavoriteItemClickListener {
                 override fun onToggleFavorite(vacancyId: String) {
-                    viewModel.toggleFavorite(vacancyId)
+                    favoritesSharedViewModel.toggleFavorite(vacancyId)
                 }
             }
 
-        viewModel.favoritesCount.observe(viewLifecycleOwner) { count ->
-            binding.countTextView.text = requireContext().resources.getQuantityString(R.plurals.vacancies_count, count, count)
+        vacanciesAdapter.onItemClickListener = { link ->
+            findNavController().navigate(R.id.action_moreVacanciesFragment_to_vacancyFragment)
         }
-        viewModel.favoriteVacancies.observe(viewLifecycleOwner) { vacancies ->
+
+        moreVacanciesViewModel.vacancies.observe(viewLifecycleOwner) { vacancies ->
             showData(vacancies)
         }
-        viewModel.error.observe(viewLifecycleOwner) {
+        moreVacanciesViewModel.error.observe(viewLifecycleOwner) {
             showError()
         }
 
+        binding.searchLayout.setStartIconOnClickListener {
+            findNavController().popBackStack()
+        }
+
         showLoading()
-        viewModel.loadFavorites()
+        moreVacanciesViewModel.loadVacancies()
     }
 
     private fun showLoading() {
@@ -81,9 +85,13 @@ class FavoritesFragment : Fragment() {
             errorLayout.visibility = View.INVISIBLE
             loadingLayout.visibility = View.INVISIBLE
             dataLayout.visibility = View.VISIBLE
+
+            val count = vacancies.size
+            countTextView.text = resources.getQuantityString(R.plurals.vacancies_count, count, count)
         }
 
         vacanciesAdapter.setData(vacancies)
+
     }
 
     private fun showError() {
@@ -94,7 +102,7 @@ class FavoritesFragment : Fragment() {
 
             retryButton.setOnClickListener {
                 showLoading()
-                viewModel.loadFavorites()
+                moreVacanciesViewModel.loadVacancies()
             }
         }
     }

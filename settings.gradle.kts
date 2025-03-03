@@ -21,4 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "VacanciesTest"
 include(":app")
- 
+include(":data")
+include(":domain")

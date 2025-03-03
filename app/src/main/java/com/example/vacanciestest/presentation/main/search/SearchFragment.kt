@@ -6,7 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.vacanciestest.R
 import com.example.vacanciestest.databinding.FragmentSearchBinding
 import com.example.vacanciestest.domain.models.Offer
 import com.example.vacanciestest.domain.models.Vacancy
@@ -46,6 +49,10 @@ class SearchFragment : Fragment() {
             adapter = vacanciesAdapter
         }
 
+        vacanciesAdapter.onItemClickListener = {
+            findNavController().navigate(R.id.action_searchFragment_to_vacancyFragment)
+        }
+
         vacanciesAdapter.favoriteItemClickListener =
             object : VacancyAdapter.FavoriteItemClickListener {
                 override fun onToggleFavorite(vacancyId: String) {
@@ -63,18 +70,29 @@ class SearchFragment : Fragment() {
             openWebSite(requireContext(), link)
         }
 
+        binding.moreVacanciesButton.setOnClickListener {
+            it.findNavController().navigate(R.id.action_searchFragment_to_moreVacanciesFragment)
+        }
+
         searchViewModel.vacancies.observe(viewLifecycleOwner) { vacancies ->
             showData(vacancies)
         }
         searchViewModel.offers.observe(viewLifecycleOwner) { offers ->
             showOffers(offers)
         }
+        searchViewModel.vacanciesCount.observe(viewLifecycleOwner) { count ->
+            binding.moreVacanciesButton.apply {
+                text = resources.getQuantityString(R.plurals.more_vacancies_count, count, count)
+                visibility = View.VISIBLE
+            }
+        }
         searchViewModel.error.observe(viewLifecycleOwner) {
             showError()
         }
 
         showLoading()
-        searchViewModel.loadData()
+        searchViewModel.loadVacancies()
+        searchViewModel.loadOffers()
     }
 
     private fun showLoading() {
@@ -93,15 +111,10 @@ class SearchFragment : Fragment() {
         }
 
         vacanciesAdapter.setData(vacancies)
+        searchViewModel.loadVacanciesCount()
     }
 
     private fun showOffers(offers: List<Offer>) {
-        with(binding) {
-            errorLayout.visibility = View.INVISIBLE
-            loadingLayout.visibility = View.INVISIBLE
-            dataLayout.visibility = View.VISIBLE
-        }
-
         offersAdapter.setData(offers)
     }
 
@@ -113,7 +126,7 @@ class SearchFragment : Fragment() {
 
             retryButton.setOnClickListener {
                 showLoading()
-                searchViewModel.loadData()
+                searchViewModel.loadVacancies()
             }
         }
     }

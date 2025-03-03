@@ -81,7 +81,7 @@
             android:layout_marginBottom="@dimen/margin_default"
             android:fontFamily="@font/sf_pro_display_medium"
             android:text="@string/error_loading_data"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="@dimen/title1"
             app:layout_constraintBottom_toTopOf="@id/retry_button"
             app:layout_constraintEnd_toEndOf="parent"
